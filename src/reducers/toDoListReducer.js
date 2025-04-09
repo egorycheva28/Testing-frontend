@@ -58,6 +58,10 @@ export function addTaskThunkCreator(name, description, deadline, priority) {
             alert("Введите задачу!");
             return;
         }
+        if (name.length < 4) {
+            alert("Длина задачи минимум 4 символа");
+            return;
+        }
         try {
             const data = await toDoListApi.addTask(name, description, deadline, priority);
             dispatch(addTaskActionCreator(data));
@@ -75,6 +79,10 @@ export function editTaskThunkCreator(name, description, deadline, priority, id) 
     return async (dispatch) => {
         if (!name) {
             alert("Введите задачу!");
+            return;
+        }
+        if (name.length < 4) {
+            alert("Длина задачи минимум 4 символа");
             return;
         }
         try {
