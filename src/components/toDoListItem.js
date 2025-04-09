@@ -108,9 +108,9 @@ function ToDoListItem(props) {
                         <span style={{ margin: '0 5px', fontWeight: '700' }} >{props.name}</span>
                         <span> ({statusTranslate[props.status]})</span>
                     </div>
-                    <div style={{ marginLeft: '6px' }}>
-                        <span style={{ textDecoration: 'underline' }}>Дедлайн:</span>
-                        <span> {formatDate(props.deadline)}</span>
+                    <div style={{display: 'flex', alignItems: 'center' , marginLeft: '5px' }}>
+                        <span style={{ textDecoration: 'underline', marginRight:"5px" }}>Дедлайн: </span>
+                        <span> { formatDate(props.deadline)}</span>
                     </div>
                 </div>) : (
                 <div onClick={openModal}>
