@@ -77,8 +77,8 @@ const ToDoList = ({ toDoList }) => {
                         <label for="sortFilter" className="form-label">Сортировать</label>
                         <select className="form-select" id="sortFilter" name="sorting" onChange={handleSortChange}>
                             <option value="">—</option>
-                            <option value="StatusAsc">По статусу задачи (сначала новые)</option>
-                            <option value="StatusDesc">По статусу задачи (сначала старые)</option>
+                            <option value="StatusAsc">По статусу задачи (сначала active)</option>
+                            <option value="StatusDesc">По статусу задачи (сначала late)</option>
                             <option value="PriorityAsc">По приоритету задачи (сначала низший)</option>
                             <option value="PriorityDesc">По приоритету задачи (сначала наивысший)</option>
                             <option value="DeadlineAsc">По дедлайну задачи (по возрастанию)</option>
