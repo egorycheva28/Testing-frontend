@@ -38,9 +38,13 @@ const ToDoList = ({ toDoList }) => {
     };
 
     const addTask = async () => {
+        if (name.length < 4) {
+            alert("Длина задачи минимум 4 символа");
+            return;
+        }
         await dispatch(addTaskThunkCreator(name, description, deadline, priorityReturnTranslate[priority]));
         await dispatch(getTasksThunkCreator(sort));
-        window.location.reload();
+        //window.location.reload();
     };
 
     useEffect(() => {
@@ -53,7 +57,7 @@ const ToDoList = ({ toDoList }) => {
                 <h1>To-Do-List</h1>
                 <div>
                     <div className="newTask">
-                        <button className='addTask' onClick={openModal}>Добавить задачу</button>
+                        <button className='addTaskButton' onClick={openModal}>Добавить задачу</button>
                     </div>
                     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={{ content: { width: '800px', height: '400px', margin: 'auto', borderRadius: '15px' } }}>
                         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

@@ -25,8 +25,21 @@
     display: flex;
     justify-content: flex-end;
 }
-
+.newTasks {
+    display: flex;
+    justify-content: flex-end;
+}
 .addTask {
+    border-radius: 8px;
+    border: none;
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-color: rgb(142, 127, 255);
+    cursor: pointer;
+}
+
+.addTaskButton {
     border-radius: 8px;
     border: none;
     width: 150px;
@@ -110,4 +123,37 @@ input {
 
 label {
     font-weight: 700;
+}
+
+.modal {
+    width: 800px;
+    height: 400px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    font-size: 44px;
+    cursor: pointer;
+}
+
+.editButton{
+    width: 50px;
+}
+
+.card-task{
+    display: flex;
+    flex-direction: column;
+}
+
+.closeModalButton{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 44px;
+    cursor: pointer;
 }

@@ -89,6 +89,10 @@ function ToDoListItem(props) {
     };
 
     const save = async () => {
+        if (name.length < 4) {
+            alert("Длина задачи минимум 4 символа");
+            return;
+        }
         await dispatch(editTaskThunkCreator(name, description, deadline, priorityReturnTranslate[priority], props.id));
         await dispatch(getTaskThunkCreator(props.id));
         await dispatch(getTasksThunkCreator(props.sort));
@@ -103,14 +107,14 @@ function ToDoListItem(props) {
 
             )}
             {deadline != null ? (
-                <div style={{ display: 'flex', flexDirection: 'column' }} onClick={openModal}>
+                <div className='card-task' onClick={openModal}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <span style={{ margin: '0 5px', fontWeight: '700' }} >{props.name}</span>
                         <span> ({statusTranslate[props.status]})</span>
                     </div>
-                    <div style={{display: 'flex', alignItems: 'center' , marginLeft: '5px' }}>
-                        <span style={{ textDecoration: 'underline', marginRight:"5px" }}>Дедлайн: </span>
-                        <span> { formatDate(props.deadline)}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '5px' }}>
+                        <span style={{ textDecoration: 'underline', marginRight: "5px" }}>Дедлайн: </span>
+                        <span> {formatDate(props.deadline)}</span>
                     </div>
                 </div>) : (
                 <div onClick={openModal}>
@@ -120,12 +124,12 @@ function ToDoListItem(props) {
             )}
 
             <div className='actions'>
-                <img src="/edit.png" onClick={openModal} style={{ width: '50px' }} />
-                <button onClick={deleteTask} style={{ background: 'none', border: 'none', fontSize: '44px', cursor: 'pointer' }}>&times;{ }</button>
+                <img src="/edit.png" onClick={openModal} className='editButton'/>
+                <button onClick={deleteTask} className='deleteButton'>&times;{ }</button>
             </div>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={{ content: { width: '800px', height: '650px', margin: 'auto', borderRadius: '15px' } }}>
                 <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                    <button onClick={closeModal} style={{ position: 'absolute', top: '10px', right: '15px', background: 'none', border: 'none', fontSize: '44px', cursor: 'pointer' }}>&times;{ }</button>
+                    <button onClick={closeModal} className='closeModalButton'>&times;{ }</button>
                     <div className='data'>
                         <label>Название:</label>
                         <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
@@ -148,7 +152,7 @@ function ToDoListItem(props) {
                         <label>Дата редактирования:</label>
                         <input value={formatDate(props.editDate)} disabled />
                     </div>
-                    <div className="newTask">
+                    <div className="newTasks">
                         <button className='save' onClick={save}>Сохранить</button>
                     </div>
                 </div>
